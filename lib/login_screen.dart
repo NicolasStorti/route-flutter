@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dashboard_screen.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -32,11 +34,20 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              ElevatedButton(onPressed: () {}, child: Text('Entrar'))
+              ElevatedButton(onPressed: () => onButtonEntrarClicked(context), child: Text('Entrar'))
             ],
           ),
         ),
       ),
     );
   }
+}
+
+void onButtonEntrarClicked (BuildContext context){
+  Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (context) => dashboardScreen(),
+      ),
+  );
 }
