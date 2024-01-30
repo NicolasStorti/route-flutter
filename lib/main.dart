@@ -19,7 +19,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      //home: LoginScreen(),
+      initialRoute: "/login",
+      routes: {
+        "/login": (context) => LoginScreen(),
+        "/dashboard": (context) {
+          return dashboardScreen();
+        }
+      },
     );
   }
 }

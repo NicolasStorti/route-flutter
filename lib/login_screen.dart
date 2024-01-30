@@ -44,10 +44,5 @@ class LoginScreen extends StatelessWidget {
 }
 
 void onButtonEntrarClicked (BuildContext context){
-  Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-          builder: (context) => dashboardScreen(),
-      ),
-  );
+ Navigator.of(context).pushReplacementNamed("/dashboard");
 }
