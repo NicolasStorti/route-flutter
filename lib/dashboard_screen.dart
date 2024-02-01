@@ -1,4 +1,3 @@
-import 'package:atividade_rotas/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class dashboardScreen extends StatelessWidget {
