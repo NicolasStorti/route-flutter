@@ -1,7 +1,7 @@
-import 'package:atividade_rotas/dashboard_screen.dart';
+import 'package:atividade_rotas/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'login_screen.dart';
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,9 +23,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/login",
       routes: {
         "/login": (context) => LoginScreen(),
-        "/dashboard": (context) {
-          return dashboardScreen();
-        }
+        "/dashboard": (context) => dashboardScreen(),
       },
     );
   }
