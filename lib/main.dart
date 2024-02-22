@@ -1,4 +1,5 @@
 import 'package:atividade_rotas/screens/dashboard_screen.dart';
+import 'package:atividade_rotas/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/login_screen.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/login",
       routes: {
         "/login": (context) => LoginScreen(),
-        "/dashboard": (context) => dashboardScreen(),
+        "/dashboard": (context) => DashboardScreen(),
+        "/addAtividade": (context) => FormScreen(atividadeContext: context)
       },
     );
   }
