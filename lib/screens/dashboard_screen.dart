@@ -40,7 +40,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
                 radius: 55.0,
-                backgroundImage: AssetImage('Assets/perfil.jpg'),
+                backgroundImage: AssetImage('assets/perfil.jpg'),
               ),
               accountName: Text('Nicolas Storti'),
               accountEmail: Text('dev.nicolasstorti@gmail.com'),
@@ -86,7 +86,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           IconButton(
                             onPressed: () {
-                              _editarAtividade(context, atividade); // Adicione esta linha
+                              _editarAtividade(context, atividade);
                             },
                             icon: Icon(Icons.edit),
                           ),
