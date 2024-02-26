@@ -23,20 +23,11 @@ class AtividadeDao {
 
   Future<int> save(Atividade atividade) async {
     final Database database = await getDatabase();
-
-    final List<Atividade> existingActivities = await find(atividade.id);
-    final bool activityExists = existingActivities.isNotEmpty;
-
-    if (!activityExists) {
-      return await database.insert(_tableName, toMap(atividade));
-    } else {
-      return await update(atividade);
-    }
+    return await database.insert(_tableName, toMap(atividade));
   }
 
   Map<String, dynamic> toMap(Atividade atividade) {
     return {
-      _id: atividade.id,
       _name: atividade.name,
     };
   }
