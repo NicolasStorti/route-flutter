@@ -28,6 +28,8 @@ class AtividadeDao {
 
   Map<String, dynamic> toMap(Atividade atividade) {
     return {
+      //oque estava dando erro
+      //_id: atividade.id
       _name: atividade.name,
     };
   }
