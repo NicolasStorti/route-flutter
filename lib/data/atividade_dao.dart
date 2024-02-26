@@ -1,14 +1,25 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:atividade_rotas/components/atividades.dart';
-import 'package:atividade_rotas/data/database.dart';
+import 'package:path/path.dart';
 
 class AtividadeDao {
-  static const String tableSql =
-      'CREATE TABLE $_tableName($_id INTEGER PRIMARY KEY AUTOINCREMENT, $_name TEXT)';
+
+  static const String tableSql = 'CREATE TABLE $_tableName ($_id INTEGER PRIMARY KEY AUTOINCREMENT, $_name TEXT)';
 
   static const String _tableName = 'atividadeTable';
   static const String _id = 'id';
   static const String _name = 'name';
+
+  static Future<Database> getDatabase() async {
+    final String path = join(await getDatabasesPath(), 'atividade.db');
+    return openDatabase(
+      path,
+      onCreate: (db, version) {
+        return db.execute(tableSql);
+      },
+      version: 1,
+    );
+  }
 
   Future<int> save(Atividade atividade) async {
     final Database database = await getDatabase();
@@ -68,14 +79,14 @@ class AtividadeDao {
       whereArgs: [atividade.id],
     );
   }
+
   Future<int> updateName(int id, String newName) async {
-    final Database bancoDeDados = await getDatabase();
-    return await bancoDeDados.update(
+    final Database database = await getDatabase();
+    return await database.update(
       _tableName,
       {_name: newName},
       where: '$_id = ?',
       whereArgs: [id],
     );
   }
-
 }

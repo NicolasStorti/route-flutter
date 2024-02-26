@@ -124,9 +124,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  void onButtonAddAtividadeClicked(BuildContext context) {
-    Navigator.pushNamed(context, "/addAtividade");
+  void onButtonAddAtividadeClicked(BuildContext context) async {
+    await Navigator.pushReplacementNamed(context, "/addAtividade");
+    setState(() {
+      _atividadesFuture = AtividadeDao().findAll();
+    });
   }
+
 
   void onButtonSairClicked(BuildContext context) {
     Navigator.pushReplacementNamed(context, "/login");
@@ -142,7 +146,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
+                Navigator.of(context).pop();
               },
               child: Text("Cancelar"),
             ),
@@ -153,6 +157,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   _atividadesFuture = AtividadeDao().findAll();
                 });
                 Navigator.of(context).pop();
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Atividade excluída com sucesso.'),
+                  ),
+                );
               },
               child: Text("Excluir"),
             ),
@@ -161,7 +171,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       },
     );
   }
-
 
   void _editarAtividade(BuildContext context, Atividade atividade) async {
     showDialog(
@@ -191,6 +200,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     _atividadesFuture = AtividadeDao().findAll();
                   });
                   Navigator.of(context).pop();
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Atividade editada com sucesso.'),
+                    ),
+                  );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -206,6 +221,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       },
     );
   }
+
 
 
 

@@ -66,13 +66,12 @@ class _FormScreenState extends State<FormScreen> {
                       );
                       Navigator.pushNamedAndRemoveUntil(context, "/dashboard", (route) => false);
                       print('Atividade adicionada: $atividade');
-                    } else {
-                      print('Erro ao adicionar atividade');
                     }
                   }
                 },
                 child: Text('Adicionar Atividade'),
               ),
+
             ],
           ),
         ),
